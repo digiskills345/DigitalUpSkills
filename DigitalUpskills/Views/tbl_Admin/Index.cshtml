@@ -1,0 +1,76 @@
+﻿@model IEnumerable<DigitalUpskills.Models.tbl_Admin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>
+    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","tbl_Admin")">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Admin Name
+        </th>
+        <th>
+            Admin CNIC
+        </th>
+        <th>
+            Admin PhoneNo
+        </th>
+        <th>
+            Admin Gmail
+        </th>
+        <th>
+            Admin Address
+        </th>
+        @*<th>
+                Admin BankAccount
+            </th>*@
+        <th>
+            Admin Password
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var Admin in Model)
+    {
+        <tr>
+            <td>
+                @Admin.Admin_Name
+            </td>
+            <td>
+                @Admin.Admin_CNIC
+            </td>
+            <td>
+                @Admin.Admin_PhoneNo
+            </td>
+            <td>
+                @Admin.Admin_Gmail
+            </td>
+            <td>
+                @Admin.Admin_Address
+            </td>
+            @*<td>
+                    @Admin.Admin_BankAccount
+                </td>*@
+            <td>
+                @Admin.Admin_Password
+            </td>
+            <td>
+                <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit","tbl_Admin", new{id= Admin.Admin_Id})"> Edit </a>
+                <a class="btn btn-primary glyphicon glyphicon-book" href="@Url.Action("Details","tbl_Admin", new{id= Admin.Admin_Id})"> Detail </a>
+                <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete","tbl_Admin", new{id= Admin.Admin_Id})"> Delete </a>
+
+
+
+                @*@html.actionlink("edit", "edit", new { id = admin.admin_id })
+                    @html.actionlink("details", "details", new { id = admin.admin_id })
+                    @html.actionlink("delete", "delete", new { id = admin.admin_id })*@
+            </td>
+        </tr>
+
+    }
+
+</table>

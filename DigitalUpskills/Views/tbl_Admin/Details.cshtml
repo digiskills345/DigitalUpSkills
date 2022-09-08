@@ -1,0 +1,74 @@
+﻿@model DigitalUpskills.Models.tbl_Admin
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_CNIC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_CNIC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_PhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_PhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Gmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Gmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Address)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Admin_BankAccount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Admin_BankAccount)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Admin_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

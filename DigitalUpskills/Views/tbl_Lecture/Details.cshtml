@@ -1,0 +1,60 @@
+﻿@model DigitalUpskills.Models.tbl_Lecture
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_lecture</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Course.Course_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Course.Course_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lecture_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lecture_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lecture_Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lecture_Detail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Is_Demo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Is_Demo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Video_Lecture_Path)
+        </dt>
+
+        <dd>
+
+            <video src="@Url.Content(Model.Video_Lecture_Path)" width="100" height="100"> </video>
+            @*@Html.DisplayFor(model => model.Video_Lecture_Path)*@
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Lecture_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

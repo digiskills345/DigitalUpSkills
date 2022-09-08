@@ -1,0 +1,42 @@
+﻿@model DigitalUpskills.Models.tbl_Slide
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_Slide</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Course.Course_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Course.Course_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Slide_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Slide_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Slide_Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Slide_Detail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Slide_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

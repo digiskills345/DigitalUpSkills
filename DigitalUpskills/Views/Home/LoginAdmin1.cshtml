@@ -1,0 +1,73 @@
+﻿
+@{
+    Layout = "~/views/shared/_LayoutUser.cshtml";
+}
+<h2 class="text-center">LoginAdmin</h2>
+<h2 class="text-center text-danger">@ViewBag.loginerror</h2>
+@*<html class="login-pf">
+    ...
+    <div class="login-pf-page">*@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+            @*<header class="login-pf-page-header">
+                    <img class="login-pf-brand" src="/assets/img/Logo_Horizontal_Reversed.svg" alt=" logo" />
+                    <p>
+                            This is placeholder text, only. Use this area to place any information or introductory message about your application that may be relevant for users.
+                        </p>
+                </header>*@
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                    <div class="card-pf">
+                        <header class="login-pf-header">
+                            <select class="selectpicker">
+                                <option>english</option>
+                                <option>french</option>
+                                <option>urdu</option>
+                                <option>italian</option>
+                                <option>turkish</option>
+                                <option>arabic</option>
+                                <option>japnese</option>
+                                <option>chinese</option>
+                                <option>latin</option>
+                                <option>more..</option>
+                            </select>
+                            <h1>login your account</h1>
+                        </header>
+                        <form style="border-style:solid; border-color:cornflowerblue; padding:50px 50px 50px 50px;" action="/Home/LoginAdmin" method="post">
+                            <div class="form-group">
+                                <label class="sr-only" for="exampleInputEmail1">Email address/PhoneNo</label>
+                                <input name="Email" type="email" class="form-control  input-lg" id="exampleInputEmail1" placeholder="Email Address/PhoneNo">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="exampleInputPassword1">
+                                    Password
+                                </label>
+                                <input type="password" name="Password" class="form-control input-lg" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+                            <div class="form-group login-pf-settings">
+                                <label class="checkbox-label">
+                                    <input type="checkbox"> Keep me logged in for 30 days
+                                </label>
+
+                                <a href="#">Forgot password?</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Log In</button>
+                        </form>
+                        <p class="login-pf-signup">Need an account?<a href="#">Sign up</a></p>
+                    </div><!-- card -->
+
+                    <footer class="login-pf-page-footer">
+                        <ul class="login-pf-page-footer-links list-unstyled">
+                            <li>
+                                <a class="login-pf-page-footer-link" href="#">1.Terms of Use</a>&nbsp; &nbsp;
+                                <a class="login-pf-page-footer-link" href="#">2.Help</a>&nbsp; &nbsp;
+                                <a class="login-pf-page-footer-link" href="#">3.Privacy Policy</a>
+                        </ul>
+                    </footer>
+                </div><!-- col -->
+            </div><!-- row -->
+        </div><!-- col -->
+    </div><!-- row -->
+</div><!-- container -->
+

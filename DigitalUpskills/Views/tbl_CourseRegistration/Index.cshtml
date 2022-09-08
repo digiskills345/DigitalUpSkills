@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DigitalUpskills.Models.tbl_CourseRegistration>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+
+    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","tbl_CourseRegistration")"> Create New </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Course Name
+        </th>
+        <th>
+            Student Name
+        </th>
+        <th>
+            Course_Registration Detail
+        </th>
+        <th>
+            Payment Mode
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var CourseRegistration in Model)
+    {
+        <tr>
+            <td>
+                @CourseRegistration.tbl_Course.Course_Name
+            </td>
+            <td>
+                @CourseRegistration.tbl_Student.Student_Name
+            </td>
+            <td>
+                @CourseRegistration.Course_Registration_Detail
+            </td>
+            <td>
+                @CourseRegistration .Payment_Mode
+            </td>
+            <td>
+                <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit", "tbl_CourseRegistration" , new{id= CourseRegistration.Course_Registraion_Id})"> Edit </a>
+                <a class="btn btn-primary glyphicon glyphicon-book" href="@Url.Action("Details", "tbl_CourseRegistration" , new{id= CourseRegistration.Course_Registraion_Id})"> Detail </a>
+                <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete", "tbl_CourseRegistration" , new{id= CourseRegistration.Course_Registraion_Id})"> Delete </a>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,100 @@
+﻿@model DigitalUpskills.Models.tbl_CourseRegistration
+
+@{
+    ViewBag.Title = "Details";
+}
+@*@model DigitalUpskills.Models.tbl_CourseRegistration
+
+@{
+    ViewBag.Title = "Details";
+}*@
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_CourseRegistration</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Course.Course_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Course.Course_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Student.Student_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Student.Student_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Course_Registration_Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course_Registration_Detail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment_Mode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment_Mode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Course_Registraion_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_CourseRegistration</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Course.Course_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Course.Course_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Student.Student_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Student.Student_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Course_Registration_Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course_Registration_Detail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment_Mode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment_Mode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Course_Registraion_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

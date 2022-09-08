@@ -1,0 +1,85 @@
+@using DigitalUpskills.Models
+@using DigitalUpskills.Utills
+@{
+    Layout = "~/views/shared/_LayoutUser.cshtml";
+    //Model1 db = new Model1();
+    List<tbl_Course> list = new List<tbl_Course>();
+    if (Session ["cart"] != null)
+    {
+        list = (List<tbl_Course>)Session["cart"];
+    }
+    int indexno = -1;
+    tbl_Student student = CurrentUser.CurrentStudent;
+}
+
+
+
+
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="page-name ">Cart</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="page-wrapper">
+    <div class="cart shopping">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="block">
+                        <div class="product-list">
+                            <form method="post">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="">Course Image</th>
+                                            <th class="">Course Name </th>
+                                            <th class="">CourseCategory Name </th>
+                                            <th class="">Course Code</th>
+                                            <th class="">Course fee</th>
+                                            <th class="">Instructor Name</th>
+                                            <th class="">Actions</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in list)
+                                        {
+                                            indexno++;
+                                            <tr class="">
+
+                                                <td class="">
+                                                    <div class="product-info">
+                                                        <img width="80" src="@Url.Content(item.Course_Image)" alt="" />
+
+                                                    </div>
+                                                </td>
+                                                <td class="">@item.Course_Name </td>
+                                                <td class="">@item.tbl_CourseCategory.CourseCategory_Name </td>
+                                                <td class="">@item.Course_Code </td>
+                                                <td class="">@item.Course_Fee </td>
+                                                <td class="">@item.tbl_Instructor.Instructor_Name </td>
+                                                <td class="">
+                                                <a class="product remove btn btn-primary"  href="@Url.Action("Removefromcart","Cart", new { id=indexno })">Remove</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <a href="@Url.Action("Checkout","Cart")" class="btn btn-primary pull-right">Checkout</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","tbl_Lecture")"> Create New </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Course Name
+        </th>
+        <th>
+            Lecture Name
+        </th>
+        <th>
+            Lecture Detail
+        </th>
+        <th>
+            Is Demo?
+        </th>
+        <th>
+            Video Lecture Path
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var Lecture in Model)
+    {
+        <tr>
+            <td>
+                @Lecture.tbl_Course.Course_Name
+            </td>
+            <td>
+                @Lecture.Lecture_Name
+            </td>
+            <td>
+                @Lecture.Lecture_Detail
+            </td>
+            <td>
+                @Lecture.Is_Demo
+            </td>
+            <td>
+                <video controls width="100" height="100">
+
+                    <source src="@Url.Content(Lecture.Video_Lecture_Path)" />
+
+                </video>
+            </td>
+            <td>
+                <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit", "tbl_Lecture" , new{id= Lecture.Lecture_Id})"> Edit </a>
+                <a class="btn btn-primary glyphicon glyphicon-book" href="@Url.Action("Details", "tbl_Lecture" , new{id= Lecture.Lecture_Id})"> Detail </a>
+                <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete", "tbl_Lecture" , new{id= Lecture.Lecture_Id})"> Delete </a>
+
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.Lecture_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Lecture_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Lecture_Id })*@
+            </td>
+        </tr>
+    }
+
+</table>

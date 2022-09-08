@@ -1,0 +1,91 @@
+﻿<DigitalUpskills.Models.tbl_Instructor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","tbl_Instructor")"> Create New </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Instructor Name
+        </th>
+        <th>
+            Instructor CNIC
+        </th>
+        <th>
+            Instructor Detail
+        </th>
+        <th>
+            Instructor Qualification
+        </th>
+        <th>
+            Instructor PhoneNo
+        </th>
+        <th>
+            Instructor Image
+        </th>
+        <th>
+            Instructor Gmail
+        </th>
+        <th>
+            Instructor Password
+        </th>
+        <th>
+            Instructor Address
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var Instructor in Model)
+    {
+        <tr>
+            <td>
+                @Instructor.Instructor_Name
+            </td>
+
+            <td>
+                @Instructor.Instructor_CNIC
+            </td>
+
+            <td>
+                @Instructor.Instructor_Detail
+            </td>
+
+            <td>
+                @Instructor.Instructor_Qualification
+            </td>
+
+            <td>
+                @Instructor.Instructor_PhoneNo
+            </td>
+
+            <td>
+                <img src="@Url.Content(Instructor.Instructor_Image)" width="100" height="100" />
+            </td>
+
+            <td>
+                @Instructor.Instructor_Gmail
+            </td>
+
+            <td>
+                @Instructor.Instructor_Password
+            </td>
+
+            <td>
+                @Instructor.Instructor_Address
+            </td>
+
+            <td>
+                <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit", "tbl_Instructor" , new{id= Instructor.Instructor_Id})"> Edit </a>
+                <a class="btn btn-primary glyphicon glyphicon-book" href="@Url.Action("Details", "tbl_Instructor" , new{id= Instructor.Instructor_Id})"> Detail </a>
+                <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete", "tbl_Instructor" , new{id= Instructor.Instructor_Id})"> Delete </a>
+            </td>
+        </tr>
+    }
+
+</table>

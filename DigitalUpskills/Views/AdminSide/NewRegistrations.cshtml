@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DigitalUpskills.Models.tbl_CourseRegistration>
+
+
+@{
+    ViewBag.Title = "NewRegistrations";
+}
+
+<h2>NewRegistrations</h2>
+@*@Html.Raw(TempData["msg"])*@
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Course.Course_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Student.Student_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Course_Registration_Detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payment_Mode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Course.Course_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Student.Student_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course_Registration_Detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payment_Mode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td><a href="@Url.Action("Invoice","AdminSide",new { id=item.Course_Registraion_Id})" class="btn btn-primary">Invoice</a></td>
+            @*<td><a href="@Url.Action("Addtoregister","AdminSide",new { id=item.Course_Registraion_Id})" class="btn btn-primary">Registered</a></td>*@
+        </tr>
+    }
+
+</table>

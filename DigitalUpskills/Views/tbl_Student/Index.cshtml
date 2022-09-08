@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DigitalUpskills.Models.tbl_Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","tbl_Student")"> Create New </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Student Name
+        </th>
+        <th>
+            Student CNIC
+        </th>
+        <th>
+            Student Gmail
+        </th> 
+        <th>
+            Student Password
+        </th>
+        <th>
+            Student PhoneNo
+        </th>
+        <th>
+            Student Address
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var Student in Model)
+    {
+        <tr>
+            <td>
+                @Student.Student_Name
+            </td>
+            <td>
+                @Student.Student_CNIC
+            </td>
+            <td>
+                @Student.Student_Gmail
+            </td> 
+            <td>
+                @Student.Student_Password
+            </td>
+
+            <td>
+                @Student.Student_PhoneNo
+            </td>
+            <td>
+                @Student.Student_Address
+            </td>
+            <td>
+                <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit", "tbl_Student" , new{id= Student.Student_Id})"> Edit </a>
+                <a class="btn btn-primary glyphicon glyphicon-book" href="@Url.Action("Details", "tbl_Student" , new{id= Student.Student_Id})"> Detail </a>
+                <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete", "tbl_Student" , new{id= Student.Student_Id})"> Delete </a>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DigitalUpskills.Models.tbl_Feedback>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+
+    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","tbl_Feedback")"> Create New </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Student Name
+        </th>
+        <th>
+            Feedback Description
+        </th>
+        <th>
+            Feedback Rating
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var Feedback in Model)
+    {
+        <tr>
+            <td>
+                @Feedback.tbl_Student.Student_Name
+            </td>
+            <td>
+                @Feedback.Feedback_Description
+            </td>
+            <td>
+                @Feedback.Feedback_Rating
+            </td>
+            <td>
+                <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit", "tbl_Feedback" , new{id= Feedback.Feedback_Id})"> Edit </a>
+                <a class="btn btn-primary glyphicon glyphicon-book" href="@Url.Action("Details", "tbl_Feedback" , new{id= Feedback.Feedback_Id})"> Detail </a>
+                <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete", "tbl_Feedback" , new{id= Feedback.Feedback_Id})"> Delete </a>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model DigitalUpskills.Models.tbl_Feedback
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_Feedback</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Student.Student_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Student.Student_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Feedback_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Feedback_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Feedback_Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Feedback_Rating)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Feedback_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

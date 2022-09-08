@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DigitalUpskills.Models.tbl_CourseCategory>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","tbl_CourseCategory")"> Create New </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            CourseCategory Name
+        </th>
+        <th>
+            CourseCategory Details
+        </th>
+        <th>
+            CourseCategory Image 
+        </th>
+
+    </tr>
+
+    @foreach (var coursecategory in Model)
+    {
+        <tr>
+            <td>
+                @coursecategory.CourseCategory_Name
+            </td>
+            <td>
+                @coursecategory.CourseCategory_Details
+            </td>
+            <td>
+                <img src="@Url.Content(coursecategory.CourseCategory_Image)" width="100" height="100" />
+            </td>
+            <td>
+                <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit", "tbl_CourseCategory" , new{id= coursecategory.CourseCategory_Id})"> Edit </a>
+                <a class="btn btn-primary glyphicon glyphicon-book" href="@Url.Action("Details", "tbl_CourseCategory" , new{id= coursecategory.CourseCategory_Id})"> Detail </a>
+                <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete", "tbl_CourseCategory" , new{id= coursecategory.CourseCategory_Id})"> Delete </a>)
+            </td>
+        </tr>
+    }
+
+</table>
