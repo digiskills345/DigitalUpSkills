@@ -13,6 +13,7 @@ namespace DigitalUpskills.Controllers
         Model1 db = new Model1();
         //private int id;
 
+
         // GET: AdminSide
         public ActionResult NewRegistrations()
         {
