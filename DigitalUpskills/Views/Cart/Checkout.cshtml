@@ -10,7 +10,6 @@
     }
     int indexno = -1;
     tbl_Student student = CurrentUser.CurrentStudent;
-    int total = 0;
 }
 
 <section class="page-header">
@@ -112,7 +111,6 @@
                             @foreach (var item in list)
                             {
                                 indexno++;
-                                total += item.Course_Fee*item.Course_Quantity;
                                 <div class="media product-card">
                                     <div class="col-md-6 animate-box">
                                         <div class="course">

@@ -51,8 +51,19 @@ namespace DigitalUpskills.Controllers
             }
             return View("IndexUser");
         }
+
+        public ActionResult Logout()
+        {
+            if (CurrentUser.CurrentStudent != null)
+            {
+                db.SaveChanges();
+                return RedirectToAction("IndexUser");
+            }
+            return RedirectToAction("LoginStudent");
+        }
+            
         public ActionResult SignupStudent()
-      {
+        {
             return View();
         }
         public ActionResult ForgotPassword()
