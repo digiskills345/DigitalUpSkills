@@ -15,11 +15,11 @@
         <tr>
         <tr>
             <td>Course Category:</td>
-            <td> @Html.DropDownList("CourseCategory", null, htmlAttributes: new { @class = "form-control" })</td>
+            <td> @Html.DropDownList("CourseCategory", null,"---Select Category---", htmlAttributes: new { @class = "form-control" })</td>
             <td>Course :</td>
-            <td>@Html.DropDownList("Course", null, htmlAttributes: new { @class = "form-control" })</td>
+            <td>@Html.DropDownList("Course", null,"---Select Course---",htmlAttributes: new { @class = "form-control" })</td>
         <tr>
-            <td colspan="4"><input type="submit" class="btn btn-success btn btn-block" /></td>
+            <td colspan="4"><input type="submit" class="btn btn-outline-primary btn btn-block" /></td>
         </tr>
         <tr />
     </table>
@@ -35,9 +35,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Course_Registration_Detail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Payment)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Payment_Mode)
@@ -67,9 +64,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Course_Registration_Detail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Payment)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Payment_Mode)

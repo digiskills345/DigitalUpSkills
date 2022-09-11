@@ -10,6 +10,7 @@
     }
     int indexno = -1;
     tbl_Student student = CurrentUser.CurrentStudent;
+    int total = 0;
 }
 
 <section class="page-header">
@@ -111,6 +112,7 @@
                             @foreach (var item in list)
                             {
                                 indexno++;
+                                total += item.Course_Fee*item.Course_Quantity;
                                 <div class="media product-card">
                                     <div class="col-md-6 animate-box">
                                         <div class="course">
@@ -124,29 +126,11 @@
                                                 <h3><a>@item.Course_Fee </a> </h3>
                                             </div>
                                         </div>
-
-
-                                        @*<div class="discount-code">
-                                                <p>Have a discount ? <a data-toggle="modal" data-target="#coupon-modal" href="#!">enter it here</a></p>
-                                            </div>
-                                            <ul class="summary-prices">
-                                                <li>
-                                                    <span>Subtotal:</span>
-                                                    <span class="price">$190</span>
-                                                </li>*@
-                                        @*<li>
-                                                    <span>Shipping:</span>
-                                                    <span>Free</span>
-                                                </li>
-                                            </ul>
+                                
                                             <div class="summary-total">
                                                 <span>Total</span>
                                                 <span>$250</span>
-                                            </div>*@
-
-                                        @*<div class="verified-icon">
-                                                <img src="images/shop/verified.png">
-                                            </div>*@
+                                            </div>
 
                                     </div>
                                 </div>

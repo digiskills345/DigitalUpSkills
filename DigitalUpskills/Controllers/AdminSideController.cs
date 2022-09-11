@@ -23,16 +23,16 @@ namespace DigitalUpskills.Controllers
         public ActionResult Invoice(int id)
         {
             var register = db.tbl_CourseRegistration.Where(x => x.Course_Registraion_Id ==id).FirstOrDefault();
-            return View();
+            return View(register);
         }
-        //public ActionResult Addtoregister(int id)
-        //{
-        //    var register = db.tbl_CourseRegistration.Where(x => x.Course_Registraion_Id == id).FirstOrDefault();
-        //    register.Status = "Registered";
-        //    db.Entry(register).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //    TempData["msg"] = "<script> alert('Registration update')<script/> ";
-        //    return RedirectToAction("New Registrations");
-        //}
+        public ActionResult Addtoregister(int id)
+        {
+            var register = db.tbl_CourseRegistration.Where(x => x.Course_Registraion_Id == id).FirstOrDefault();
+            register.Status = "Registered";
+            db.Entry(register).State = EntityState.Modified;
+            db.SaveChanges();
+            TempData["msg"] = "<script> alert('Registration update')<script/> ";
+            return RedirectToAction("NewRegistrations");
+        }
     }
-    }
+}

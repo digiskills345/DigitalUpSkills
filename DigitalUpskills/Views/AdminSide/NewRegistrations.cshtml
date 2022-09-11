@@ -6,7 +6,7 @@
 }
 
 <h2>NewRegistrations</h2>
-@*@Html.Raw(TempData["msg"])*@
+@Html.Raw(TempData["msg"])
 
 <table class="table">
     <tr>
@@ -65,7 +65,7 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td><a href="@Url.Action("Invoice","AdminSide",new { id=item.Course_Registraion_Id})" class="btn btn-primary">Invoice</a></td>
-            @*<td><a href="@Url.Action("Addtoregister","AdminSide",new { id=item.Course_Registraion_Id})" class="btn btn-primary">Registered</a></td>*@
+            <td><a href="@Url.Action("Addtoregister","AdminSide",new { id=item.Course_Registraion_Id})" class="btn btn-primary">Registered</a></td>
         </tr>
     }
 

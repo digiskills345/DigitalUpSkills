@@ -36,6 +36,9 @@ namespace DigitalUpskills.Models
         [Required]
         [StringLength(50)]
         public string Course_Duration { get; set; }
+ 
+        public string Course_Quantity { get; set; }
+
 
         [Required]
         public string Course_Image { get; set; }

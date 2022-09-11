@@ -1,111 +1,91 @@
-<!--@model DigitalUpskills.Models.tbl_CourseRegistration
-  
-        <div class="col-lg-12 mt">
-          <div class="row content-panel">
-            <div class="col-lg-10 col-lg-offset-1">
-              <div class="invoice-body">
-                <div class="pull-left">
-                  <h1>DigitalUpskills</h1>
-                  <address>
-                <strong>Admin Theme, Inc.</strong><br>
-                795 Asome Ave, Suite 850<br>
-                New York, 94447<br>
-                <abbr title="Phone">P:</abbr> (123) 456-7890
-              </address>
-                </div>-->
-                <!-- /pull-left -->
-                <!--<div class="pull-right">
-                  <h2>invoice</h2>
-                </div>-->
-                <!-- /pull-right -->
-                <!--<div class="clearfix"></div>
-                <br>
-                <br>
-                <br>
-                <div class="row">
-                  <div class="col-md-9">
-                    <h4>  </h4>
-                    <address>
-                  <strong></strong><br>
-                 
-                  <abbr title="Phone">P:</abbr>
-                </address>
-                  </div>-->
-                  <!-- /col-md-9 -->
-                  <!--<div class="col-md-3">
-                    <br>
-                    <div>
-                      <div>class="pull-left"> INVOICE NO : </div>
-                      <div class="pull-right"> </div>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div>-->
-                      <!-- /col-md-3 -->
-                      <!--<div class="pull-left"> INVOICE DATE : </div>
-                      <div class="pull-right"> </div>
-                      <div class="clearfix"></div>
-                    </div>-->
-                    <!-- /row -->
-                    <!--<br>
-                    <div class="well well-small green">
-                      <div class="pull-left"> Total Due : </div>
-                      <div class="pull-right"> 8,000 USD </div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>-->
-                  <!-- /invoice-body -->
-                <!--</div>-->
-                <!-- /col-lg-10 -->
-                <!--<table class="table">
-                  <thead>
-                    <tr>
-                      <th style="width:60px" class="text-center">QTY</th>
-                      <th class="text-left">DESCRIPTION</th>
-                      <th style="width:140px" class="text-right">UNIT PRICE</th>
-                      <th style="width:90px" class="text-right">TOTAL</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="text-center">1</td>
-                      <td>Flat Pack Heritage</td>
-                      <td class="text-right">$429.00</td>
-                      <td class="text-right">$429.00</td>
-                    </tr>
-                    <tr>
-                      <td class="text-center">2</td>
-                      <td>Carry On Suitcase</td>
-                      <td class="text-right">$300.00</td>
-                      <td class="text-right">$600.00</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2" rowspan="4">
-                        <h4>Terms and Conditions</h4>
-                        <p>Thank you for your business. We do expect payment within 21 days, so please process this invoice within that time. There will be a 1.5% interest charge per month on late invoices.</p>
-                        <td class="text-right"><strong>Subtotal</strong></td>
-                        <td class="text-right">$1029.00</td>
-                    </tr>
-                    <tr>
-                      <td class="text-right no-border"><strong>Shipping</strong></td>
-                      <td class="text-right">$0.00</td>
-                    </tr>
-                    <tr>
-                      <td class="text-right no-border"><strong>VAT Included in Total</strong></td>
-                      <td class="text-right">$0.00</td>
-                    </tr>
-                    <tr>
-                      <td class="text-right no-border">
-                        <div class="well well-small green"><strong>Total</strong></div>
-                      </td>
-                      <td class="text-right"><strong>$1029.00</strong></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <br>
-                <br>
-              </div>
-              </div>
-              </div>
-            </div>-->
-            
+@model DigitalUpskills.Models.tbl_CourseRegistration
 
+    <div class="unix-invoice">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="invoice" class="effect2 m-t-120">
+                        <div id="invoice-top">
+                            <div class="invoice-logo"></div>
+                            <div class="invoice-info">
+                                <h2>Admin</h2>
+                                <p>
+                                    dodomaster52@gmail.com<br> +923267762744
+                                </p>
+                            </div>
+                            <!--End Info-->
+                            <div class="title">
+                                <h4>Invoice No: @Model.Course_Registraion_Id</h4>
+                                <p>
+                                  Registration Date: @Model.Registration_Date
+                                </p>
+                            </div>
+                            <!--End Title-->
+                        </div>
+                        <!--End InvoiceTop-->
+
+
+
+                        <div id="invoice-mid">
+
+                            <div class="clientlogo"></div>
+                            <div class="invoice-info">
+                                <h4>Student Info:</h4>
+                                <p>Student Name: @Model.Name <br />
+                                  Student Email: @Model.Gmail <br />
+                                  Student PhoneNo: @Model.PhoneNo <br />
+                                   Student Address: @Model.Address </p>
+                            </div>
+
+                            <div id="project">
+                                <h2>Description</h2>
+                                <p>@Model.tbl_Course.Course_Detail</p>
+                            </div>
+
+                        </div>
+                        <!--End Invoice Mid-->
+
+                        <div id="invoice-bot">
+
+                            <div id="invoice-table">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tr class="tabletitle">
+                                            <td class="table-item">
+                                                <h2>Item Description</h2>
+                                            </td>
+                                            <td class="Hours">
+                                                <h2>Fee</h2>
+                                            </td>
+                                            <td class="Rate">
+                                                <h2>Duration</h2>
+                                            </td>
+                                            <td class="subtotal">
+                                                <h2>Total</h2>
+                                            </td>
+                                        </tr>
+                                     
+                                        <tr class="service">
+                                            <td class="tableitem">
+                                                <p class="itemtext">@Model.tbl_Course.Course_Name</p>
+                                            </td>
+                                            <td class="tableitem">
+                                                <p class="itemtext">@Model.tbl_Course.Course_Fee</p>
+                                            </td>
+                                            <td class="tableitem">
+                                                <p class="itemtext">@Model.tbl_Course.Course_Duration</p>
+                                            </td>
+                                            <td class="tableitem">
+                                                <p class="itemtext">@Model.tbl_Course.Course_Fee</p>
+                                            </td>
+                                        </tr>
+                                    
+                                    </table>
+                                </div>
+                            </div>
+                                </div>
+                                    </div>
+                                      </div>
+                                        </div>
+                                          </div>
+                                              </div>
