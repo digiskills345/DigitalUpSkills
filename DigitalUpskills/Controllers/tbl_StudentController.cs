@@ -58,62 +58,7 @@ namespace DigitalUpskills.Controllers
             return View(tbl_Student);
         }
 
-        // GET: tbl_Student/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbl_Student tbl_Student = db.tbl_Student.Find(id);
-            if (tbl_Student == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbl_Student);
-        }
-
-        // POST: tbl_Student/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Student_Id,Student_Name,Student_CNIC,Student_Gmail,Student_PhoneNo,Student_Address")] tbl_Student tbl_Student)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(tbl_Student).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(tbl_Student);
-        }
-
-        // GET: tbl_Student/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbl_Student tbl_Student = db.tbl_Student.Find(id);
-            if (tbl_Student == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbl_Student);
-        }
-
-        // POST: tbl_Student/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            tbl_Student tbl_Student = db.tbl_Student.Find(id);
-            db.tbl_Student.Remove(tbl_Student);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        
 
         protected override void Dispose(bool disposing)
         {

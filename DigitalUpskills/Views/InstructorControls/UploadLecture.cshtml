@@ -1,0 +1,86 @@
+﻿@using DigitalUpskills.Models
+@{ Layout = "~/views/shared/_LayoutUser.cshtml";
+    Model1 db = new Model1();
+}
+
+<aside id="fh5co-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url('../../Content/Projectpic/course (4).jpeg');">
+                <div class="overlay-gradient"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center slider-text">
+                            <div class="slider-text-inner">
+                                <h1 class="heading-section">Start teaching and earning</h1>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
+@model DigitalUpskills.Models.tbl_Lecture
+@{
+    ViewBag.Title = "Upload Your Lectures";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "tbl_Lecture", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @*<h4>Create your course</h4>*@
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Lecture_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Lecture_Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Lecture_Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Lecture_Detail, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Lecture_Detail, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Lecture_Detail, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Video_Lecture_Path, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="Video" required accept="video/*" />
+            </div>
+        </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.Instructor_Fid, "Instructor_Fid", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Instructor_Fid", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Instructor_Fid, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.CourseCategory_Fid, "CourseCategory_Fid", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("CourseCategory_Fid", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CourseCategory_Fid, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        }
+

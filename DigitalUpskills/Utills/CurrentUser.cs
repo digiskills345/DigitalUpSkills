@@ -9,6 +9,6 @@ namespace DigitalUpskills.Utills
     public static class CurrentUser
     {
         public static tbl_Student CurrentStudent { get; set; }
-        public static tbl_Instructor Currentinstructor { get; internal set; }
+        public static tbl_Instructor Currentinstructor { get; set; }
     }
 }

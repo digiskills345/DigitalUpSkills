@@ -10,6 +10,7 @@
     }
     int indexno = -1;
     tbl_Student student = CurrentUser.CurrentStudent;
+    int total=0;
 }
 
 <section class="page-header">
@@ -54,31 +55,38 @@
                                     <input name="Gmail" value="@student.Student_Gmail" type="text" class="form-control" id="Gmail" placeholder="">
                                 </div>
                             </div>
-
                         </div>
-                        <div class="block">
-                            <hr class="mb-4">
-                            <div class="title"> <span>Payment</span> </div>
-                            <div class="checkout-product-details">
-                                <div class="payment">
-                                    <div class="card-details">
 
-                                        <div class="d-block my-3">
-                                            <div class="custom-control custom-radio">
-                                                <input id="credit" name="Payment_Mode" value="Credit_Card" type="radio" class="custom-control-input" checked required>
-                                                <label class="custom-control-label" for="credit">Credit card</label>
-                                            </div>
-                                            <div class="custom-control custom-radio">
-                                                <input id="debit" name="Payment_Mode" value="Debit_Card" type="radio" class="custom-control-input" required>
-                                                <label class="custom-control-label" for="debit">Debit card</label>
-                                            </div>
-                                            <div class="custom-control custom-radio">
-                                                <input id="paypal" name="Payment_Mode" value="Paypal" type="radio" class="custom-control-input" required>
-                                                <label class="custom-control-label" for="paypal">Paypal</label>
-                                            </div>
-                                        </div> 
-                                        <button class="btn btn-primary" type="submit"> Register Your Course</button>
-                                        @*<h4 class="widget-title">Payment Method</h4>
+
+                        @using (Html.BeginForm("PayNow", "Cart"))
+                        {
+                            <div class="block">
+                                <hr class="mb-4">
+                                <div class="title"> <span>Payment</span> </div>
+                                <div class="checkout-product-details">
+                                    <div class="payment">
+                                        <div class="card-details">
+                                            @foreach (var item in list)
+                                            {
+                                                <div class="d-block my-3">
+                                                    <div class="custom-control custom-radio">
+                                                        <input id="credit" name="Payment_Mode" value="Credit_Card" type="radio" class="custom-control-input" checked required>
+                                                        <label class="custom-control-label" for="credit">Credit card</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input id="debit" name="Payment_Mode" value="Debit_Card" type="radio" class="custom-control-input" required>
+                                                        <label class="custom-control-label" for="debit">Debit card</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input id="paypal" name="Payment_Mode" value="Paypal" type="radio" class="custom-control-input" required>
+                                                        <label class="custom-control-label" for="paypal">Paypal</label>
+                                                    </div>
+                                                </div>
+                                            }
+                                            @*<button class="btn btn-primary" type="submit"> Register Your Course</button>*@
+                                            <a href="@Url.Action("PayNow","Cart")" type="submit"  class="btn btn-primary pull-right">Register Your Course</a>
+
+                                            @*<h4 class="widget-title">Payment Method</h4>
         <p>Credit Cart Details (Secure payment)</p>
         <div class="checkout-product-details">
             <div class="payment">
@@ -96,14 +104,17 @@
                             <label for="card-cvc">Card Code <span class="required">*</span></label>
                             <input id="card-cvc" class="form-control" type="tel" maxlength="4" placeholder="CVC">
                         </div>*@
-                                        @*<a href="@Url.Action("CourseRegistered","Cart")" type="submit"  class="btn btn-primary pull-right">Register Your Course</a>*@
+                                            @*<a href="@Url.Action("CourseRegistered","Cart")" type="submit"  class="btn btn-primary pull-right">Register Your Course</a>*@
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        }
                         </div>
-                    </div>
+
                 </form>
+                   
                 <div class="col-md-4">
                     <div class="product-checkout-details">
                         <div class="block">
@@ -111,6 +122,7 @@
                             @foreach (var item in list)
                             {
                                 indexno++;
+                                total += item.Course_Fee;
                                 <div class="media product-card">
                                     <div class="col-md-6 animate-box">
                                         <div class="course">
@@ -124,20 +136,20 @@
                                                 <h3><a>@item.Course_Fee </a> </h3>
                                             </div>
                                         </div>
-                                
-                                            <div class="summary-total">
-                                                <span>Total</span>
-                                                <span>$250</span>
-                                            </div>
-
                                     </div>
                                 </div>
+                                Session["Total"] = total;
                             }
+                            <div class="summary-total">
+                                <span>Total</span>
+                                <span>RS: @total</span>
+                            </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
+              
+                    

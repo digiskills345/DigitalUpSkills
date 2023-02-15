@@ -1,76 +1,125 @@
 ﻿@model IEnumerable<DigitalUpskills.Models.tbl_Course>
 
 @{
+    Layout = "~/views/shared/_LayoutUser.cshtml";
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
+@foreach (var course in Model)
+{
+    <section class="user-dashboard page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="dashboard-wrapper dashboard-user-profile">
+                        <div class="media">
+                            <div class="pull-left text-center" href="#!">
+                                <img style="height:160px" class="media-object user-img" src="@Url.Content(course.Course_Image)" alt="Image">
+                                <a href="#x" class="btn btn-transparent mt-20">Change Image</a>
+                            </div>
+                            <div class="media-body">
+                                <ul class="user-profile-list">
+                                    <li><span>Name:</span>@course.Course_Name</li>
+                                    <li><span>Duration:</span>@course.Course_Duration</li>
+                                    <li><span>Category:</span>@course.CourseCategory_Fid</li>
+                                    <li><span>Fee:</span>@course.Course_Fee</li>
+                                    <li><span>Detail:</span>@course.Course_Detail</li>
 
-<p>
-    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","tbl_Course")"> Create New </a>
-</p>
-<table class="table">
-    <tr>
-        <th>
-            CourseCategory Name
-        </th>
-        <th>
-            Instructor Name
-        </th>
-        <th>
-            Course Name
-        </th>
-        <th>
-            Course Code
-        </th>
-        <th>
-            Course Detail
-        </th>
-        <th>
-            Course Fee
-        </th>
-        <th>
-            Course Duration
-        </th>
-        <th>
-            Course Image
-        </th>
-        <th></th>
-    </tr>
+                                    <div class="col-md-6">
+                                        <div>
+                                            <div style="margin-right:50px ;padding-right:50px">
+                                                <a class=" icon-pencil" href="@Url.Action("Edit", "tbl_Course" , new{id= course.Course_Id})"></a>
+                                                <a class=" icon-book" href="@Url.Action("Details", "tbl_Course" , new{id= course.Course_Id})"> </a>
+                                                <a class=" icon-trash" href="@Url.Action("Delete", "tbl_Course" , new{id= course.Course_Id})"></a>
 
-    @foreach (var course in Model)
-    {
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a class=" btn btn-outline" href="@Url.Action("Create", "tbl_Lecture", new{id= course.Course_Id})">Upload Lectures</a>
+                                            <a class=" btn btn-outline" href="@Url.Action("Create", "tbl_Slide")">Upload Slides</a>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+@*<p>
+        <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","tbl_Course")"> Create New </a>
+    </p>
+    <table class="table">
         <tr>
-            <td>
-                @course.tbl_CourseCategory.CourseCategory_Name
-            </td>
-            <td>
-                @course.tbl_Instructor.Instructor_Name
-            </td>
-            <td>
-                @course.Course_Name
-            </td>
-            <td>
-                @course.Course_Code
-            </td>
-            <td>
-                @course.Course_Detail
-            </td>
-            <td>
-                @course.Course_Fee
-            </td>
-            <td>
-                @course.Course_Duration
-            </td>
-            <td>
-                <img src="@Url.Content(course.Course_Image)" width="100" height="100" />
-            </td>
-            <td>
-                <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit", "tbl_Course" , new{id= course.Course_Id})"> Edit </a>
-                <a class="btn btn-primary glyphicon glyphicon-book" href="@Url.Action("Details", "tbl_Course" , new{id= course.Course_Id})"> Detail </a>
-                <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete", "tbl_Course" , new{id= course.Course_Id})"> Delete </a>
-            </td>
+            <th>
+                CourseCategory Name
+            </th>
+            <th>
+                Course Name
+            </th>
+            <th>
+                Course Code
+            </th>
+            <th>
+                Course Detail
+            </th>
+            <th>
+                Course Fee
+            </th>
+            <th>
+                Course Duration
+            </th>
+            <th>
+                Course Image
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>
+                    @course.tbl_CourseCategory.CourseCategory_Name
+                </td>
+                <td>
+                    @course.Course_Name
+                </td>
+                <td>
+                    @course.Course_Code
+                </td>
+                <td>
+                    @course.Course_Detail
+                </td>
+                <td>
+                    @course.Course_Fee
+                </td>
+                <td>
+                    @course.Course_Duration
+                </td>
+                <td>
+                    <img src="@Url.Content(course.Course_Image)" width="50" height="50" />
+                </td>
+                <td>
+                    <div style="margin-right:50px ;padding-right:50px">
+                        <a class=" icon-pencil" href="@Url.Action("Edit", "tbl_Course" , new{id= course.Course_Id})"></a>
+                        <a class=" icon-book" href="@Url.Action("Details", "tbl_Course" , new{id= course.Course_Id})"> </a>
+                        <a class=" icon-trash" href="@Url.Action("Delete", "tbl_Course" , new{id= course.Course_Id})"></a>
+
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <a class=" btn btn-outline" href="@Url.Action("Create", "tbl_Lecture", new{id= course.Course_Id})">Upload Lectures</a>
+                        <a class=" btn btn-outline" href="@Url.Action("Create", "tbl_Slide")">Upload Slides</a>
+                    </div>
+                </td>
+            </tr>
+        }
+
+
+    </table>*@
+

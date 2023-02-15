@@ -1,0 +1,104 @@
+
+@using DigitalUpskills.Models
+@{ Layout = "~/views/shared/_LayoutUser.cshtml";
+    List<tbl_Course> list = new List<tbl_Course>();
+    if (TempData["registered"] != null)
+    {
+        list = (List<tbl_Course>)TempData.Peek("registered");
+
+    }
+    int indexno = -1;
+
+
+
+}
+
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="page-name">Course Registered</h1>
+                    <span>Your Course is registered successfully..</span>
+                    @*<ol class="breadcrumb">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active">cart</li>
+                        </ol>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="page-wrapper success-msg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="block text-center">
+
+                    <h2 class="text-center">Thank you! For your payment</h2>
+                    <p>We hope that you will learn skills and information</p>
+                    <a href="@Url.Action("Courses","Home")" class="btn btn-primary mt-20">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- /.page-warpper -->
+
+
+<div class="page-wrapper">
+    <div class="cart shopping">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="block">
+                        <div class="product-list">
+                            <form method="post">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="">Course image</th>
+                                            <th class="">Course Name</th>
+                                            <th class="">Course Category</th>
+                                            <th class="">Course Duration</th>
+                                            <th class="">Course Fee</th>
+                                            <th class="">Instructor Name</th>
+                                            @*<th class="">Actions</th*@>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in list)
+                                        {
+                                            indexno++;
+                                            <tr class="">
+
+                                                <td class="">
+                                                    <div class="product-info">
+                                                        <img width="80" src="@Url.Content(item.Course_Image)" alt="" />
+
+                                                    </div>
+                                                </td>
+                                                <td class="">@item.Course_Name</td>
+                                                <td class="">@item.tbl_CourseCategory.CourseCategory_Name</td>
+                                                <td class="">@item.Course_Duration</td>
+                                                <td class="">@item.Course_Fee</td>
+                                                <td class="">@item.tbl_Instructor.Instructor_Name</td>
+
+                                            </tr>
+                                        }
+
+
+                                    </tbody>
+                                </table>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<h2>CourseRegistered</h2>*@
+

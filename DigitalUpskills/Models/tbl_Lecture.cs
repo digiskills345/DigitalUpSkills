@@ -19,9 +19,8 @@ namespace DigitalUpskills.Models
         [StringLength(200)]
         public string Lecture_Detail { get; set; }
 
-        public int Is_Demo { get; set; }
-
         [Required]
+        [StringLength(5000)]
         public string Video_Lecture_Path { get; set; }
 
         public int Course_Fid { get; set; }

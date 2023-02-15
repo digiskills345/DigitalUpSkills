@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DigitalUpskills.Models;
+using DigitalUpskills.Utills;
 
 namespace DigitalUpskills.Controllers
 {
@@ -48,15 +49,13 @@ namespace DigitalUpskills.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Slide_Id,Slide_Name,Slide_Detail,Course_Fid")] tbl_Slide tbl_Slide)
+        public ActionResult Create(tbl_Slide tbl_Slide, HttpPostedFileBase pdf)
         {
-            if (ModelState.IsValid)
-            {
-                db.tbl_Slide.Add(tbl_Slide);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
+            string fullpath = Server.MapPath("~/Content/Slides/" + pdf.FileName);
+            pdf.SaveAs(fullpath);
+            tbl_Slide.Slide_PDF = "~/Content/Slides/" +pdf.FileName;
+            db.tbl_Slide.Add(tbl_Slide);
+            db.SaveChanges();
             ViewBag.Course_Fid = new SelectList(db.tbl_Course, "Course_Id", "Course_Name", tbl_Slide.Course_Fid);
             return View(tbl_Slide);
         }
@@ -82,8 +81,15 @@ namespace DigitalUpskills.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Slide_Id,Slide_Name,Slide_Detail,Course_Fid")] tbl_Slide tbl_Slide)
+        public ActionResult Edit(tbl_Slide tbl_Slide, HttpPostedFileBase pdf)
         {
+            if (pdf != null)
+            {
+                string fullpath = Server.MapPath("~/content/Slides" + pdf.FileName);
+                pdf.SaveAs(fullpath);
+               // tbl_Slide.Slide_PDF = "~/content/Slides" + pdf.FileName;
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(tbl_Slide).State = EntityState.Modified;

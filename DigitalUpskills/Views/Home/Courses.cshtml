@@ -1,26 +1,28 @@
 @using DigitalUpskills.Models
-
+@model DigitalUpskills.Utills.SearchCourses
+@*@model List<DigitalUpskills.Models.tbl_Course>*@
 @{ Layout = "~/views/shared/_LayoutUser.cshtml";
     Model1 db = new Model1();
 }
 
 <aside id="fh5co-hero">
-    <div class="flexslider">
-        <ul class="slides">
-            <li style="background-image: url('../../Content/Projectpic/course (4).jpeg');">
-                <div class="overlay-gradient"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 text-center slider-text">
-                            <div class="slider-text-inner">
-                                <h1 class="heading-section">Our Course</h1>
-
+    <div class="container">
+        <div class="flexslider">
+            <ul class="slides">
+                <li style="background-image: url('../../Content/Projectpic/course (4).jpeg');">
+                    <div class="overlay-gradient"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center slider-text">
+                                <div class="slider-text-inner">
+                                    <h1 class="heading-section">Our Course</h1>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </aside>
 
@@ -29,51 +31,118 @@
         <div class="row animate-box">
             <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
                 <h2>Our Course</h2>
-                <p>Here are available different courses for enhance student's skills and knowledge</p>
+                <p>Here are available different courses to enhance student's skills and knowledge!</p>
             </div>
         </div>
-        <div class="row">
-            @foreach (var item in db.tbl_Course)
+        @using (Html.BeginForm("Courses", "Home", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="product-search">
+                    <input type="text" name="Search" placeholder="Search">
+                    <button type="submit"><i class="btn btn-search"></i>Search</button>
+                </div>
+            </div>
+        }
+
+        @foreach (var item in Model.Courses)
+        {
+            if (ViewData["catid"] == null || item.CourseCategory_Fid == (int)ViewData["catid"])
             {
-                if (ViewData["catid"] == null || item.CourseCategory_Fid == (int)ViewData["catid"])
-                {
-                    <div class="col-md-6 animate-box">
-                        <div class="course">
-                            <a href="#" class="course-img">
-                                <img src="@Url.Content(item.Course_Image)" style="width:100% ;height: 200px">
-                            </a>
-                            <div class="desc">
-                                <h3><a href="#">@item.Course_Name</a></h3>
-                                <h3><a href="#">@item.Course_Code</a></h3>
-                                <p>@item.Course_Detail</p>
-                                <span><a href="@Url.Action("Addtocart","Cart",new { id=item.Course_Id})" class="btn btn-primary btn-sm btn-course">Add to Cart</a></span>
-                            </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="fh5co-blog animate-box">
+                        <a href="#" class="course-img">
+                            <img src="@Url.Content(item.Course_Image)" class="img-thumbnail" style="width:200% ;height: 200px">
+                        </a>
+                        <div class="blog-text">
+                            <h3><a href="#">@item.Course_Name</a></h3>
+                            <p>@item.Course_Detail</p>
+                            <ul>
+                                <li>
+                                    <span data-toggle="modal" data-target="#course-modal">
+                                        <a href="@Url.Action("CourseDetail","Course" , new {id = item.Course_Id})"><i class="icon-search3 btn btn-primary btn-sm btn-course"></i></a>
+                                        <a href="@Url.Action("bookmark", "Bookmark", new { id = item.Course_Id})" class="icon-bookmark btn btn-primary btn-sm"></a>
+                                        <a href="@Url.Action("AddToCart", "Cart", new { id = item.Course_Id })"><i class="icon-shopping-cart btn btn-primary btn-sm btn-course"></i></a> <br />
+                                        @*<a href="@Url.Action("Lectures", "Home", new { id = item.Course_Id })">Lecture:<small class="text-muted"> (@item.tbl_Lecture.Count)</small></a> <br/>
+                                        <a href="@Url.Action("Slides", "Home", new { id = item.Course_Id })">Slides:<small class="text-muted"> (@item.tbl_Lecture.Count)</small></a>*@
+
+                                        @*<li>
+
+                                            <a class=" icon-search3 btn btn-primary btn-sm btn-course" href="@Url.Action("CourseDetail","Home",new {id = item.Course_Id})"></a>
+                                            <a class=" icon-bookmark btn btn-primary btn-sm btn-course" href="@Url.Action("Bookmark","Bookmark",new {id = item.Course_Id})"></a>
+                                            <a href="@Url.Action("AddToCart", "Cart", new { id = item.Course_Id })"><i class="icon-shopping-cart btn btn-primary btn-sm btn-course"></i></a>
+
+                                        </li>*@
+                                    </span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                }
+                </div>
+                <!--<!-- Modal -->
+                <!--<div class="modal course-modal fade" id="course-modal">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="tf-ion-close"></i>
+                </button>
+                <div class="modal-dialog " role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-8 col-sm-6 col-xs-12">
+                                    <div class="modal-image">
+                                        <img class="img-responsive" src="@Url.Content(item.Course_Image)"--> @*alt="product-img"*@
+                                        <!--/>
+                                        </div>
+                                        <div class="mask-icon">
+                                            <ul>
+                                                <li><a href="@Url.Action("CourseDetail", "Course", new { id = item.Course_Id })" data-toggle="tooltip" data-placement="right" title="View"><i class="btn icon-btn-play"></i></a></li>
+                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                            </ul>
+                                            <a class="cart" href="#">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                        <div class="product-short-details">
+                                            <h2 class="product-title">@item.Course_Name</h2>
+                                            <p class="product-detail">Course Code: @item.Course_Code</p>
+                                            <p class="product-detail">Course Duration: @item.Course_Duration</p>
+                                            <p class="product-price">Course Fee: @item.Course_Fee</p>
+                                            <p class="product-short-description">
+                                                Course Detail: @item.Course_Detail
+                                            </p>-->
+                                        @*<a href="@Url.Action("DisplayBookmark", "Bookmark", new { id = item.Course_Id})" class="btn btn-primary">Bookmark</a>*@
+                                        @*<a href="@Url.Action("AddToCart", "Cart", new { id = item.Course_Id })" class="btn btn-primary">Add To Cart</a>
+                                                                    <a href="@Url.Action("CourseSingle","Home" , new { id = item.Course_Id })" class="btn btn-primary">View Course Details</a>
 
-                else if (item.CourseCategory_Fid == (int)(ViewData["catid"]))
-                {
-                    <div class="col-md-6 animate-box">
-                        <div class="course">
-                            <a href="#" class="course-img">
-                                <img src="@Url.Content(item.Course_Image)" style="width:100% ;height: 200px">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->*@
+                                    }
 
-                            </a>
-                            <div class="desc">
-                                <h3><a href="#">@item.Course_Name</a></h3>
-                                <h3><a href="#">@item.Course_Code</a></h3>
-                                <p>@item.Course_Detail</p>
-                                <span><a href="@Url.Action("Checkout","Cart", new { id=item.Course_Id})" class="btn btn-primary btn-sm btn-course">Take Course</a></span>
+                                    else if (item.CourseCategory_Fid == (int)(ViewData["catid"]))
+                                    {
+                                        <div class="col-md-6 animate-box">
+                                            <div class="course">
+                                                <a href="#" class="course-img">
+                                                    <img src="@Url.Content(item.Course_Image)" style="width:100% ;height: 200px">
 
-                            </div>
-                        </div>
-                    </div>
-                }
-            }
+                                                </a>
+                                                <div class="desc">
+                                                    <h3><a href="#">@item.Course_Name</a></h3>
+                                                    <h3><a href="#">@item.Course_Code</a></h3>
+                                                    <p>@item.Course_Detail</p>
+                                                    <span><a href="@Url.Action("Checkout","Cart", new { id=item.Course_Id})" class="btn btn-primary btn-sm btn-course">Take Course</a></span>
 
-        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
     </div>
 </div>
-
-
+@*</div>*@

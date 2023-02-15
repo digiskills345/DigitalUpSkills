@@ -6,10 +6,10 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "tbl_Slide", FormMethod.Post, new { enctype = "multipaer/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>tbl_Slide</h4>
         <hr />
@@ -29,6 +29,16 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Slide_Detail, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Slide_Detail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Slide_PDF, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="pdf" />
+                <iframe src="~/Content/Slides/" width="100" height="100"> </iframe>
+                @Html.EditorFor(model => model.Slide_PDF, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Slide_PDF, "", new { @class = "text-danger" })
             </div>
         </div>
 

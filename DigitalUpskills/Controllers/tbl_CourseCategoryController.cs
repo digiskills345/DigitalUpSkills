@@ -99,7 +99,7 @@ namespace DigitalUpskills.Controllers
             }
             return View(tbl_CourseCategory);
         }
-          
+
 
         // GET: tbl_CourseCategory/Delete/5
         public ActionResult Delete(int? id)

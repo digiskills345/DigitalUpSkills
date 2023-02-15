@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using DigitalUpskills.Models;
 
-namespace DigitalUpskills.Controllers
+namespace DigitaalUpskills.Controllers
 {
     public class tbl_InstructorController : Controller
     {
@@ -44,7 +44,6 @@ namespace DigitalUpskills.Controllers
         // POST: tbl_Instructor/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(tbl_Instructor tbl_Instructor, HttpPostedFileBase pic)
@@ -59,47 +58,13 @@ namespace DigitalUpskills.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View();
-        }
-        // GET: tbl_Instructor/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbl_Instructor tbl_Instructor = db.tbl_Instructor.Find(id);
-            if (tbl_Instructor == null)
-            {
-                return HttpNotFound();
-            }
+
             return View(tbl_Instructor);
         }
 
-        // POST: tbl_Instructor/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(tbl_Instructor tbl_Instructor, HttpPostedFileBase pic)
-        {
-            if (pic != null)
-            {
-                string fullpath = Server.MapPath("~/content/projectpic/" + pic.FileName);
-                pic.SaveAs(fullpath);
-                tbl_Instructor.Instructor_Image = "~/content/projectpic/" + pic.FileName;
-            }
 
-            if (ModelState.IsValid)
-            {
-                db.Entry(tbl_Instructor).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(tbl_Instructor);
-        }
-            // GET: tbl_Instructor/Delete/5
-            public ActionResult Delete(int? id)
+        // GET: tbl_Instructor/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {

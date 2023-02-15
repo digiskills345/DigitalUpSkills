@@ -1,17 +1,86 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@using DigitalUpskills.Models
+
+@{ Layout = "~/views/shared/_LayoutUser.cshtml";
+    Model1 db = new Model1();
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<aside id="fh5co-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url('../../content/Projectpic/');">
+                <div class="overlay-gradient"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center slider-text">
+                            <div class="slider-text-inner">
+                                <h1 class="heading-section">Contact us</h1>
+                                <h2><a>Contact for any query!</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div id="fh5co-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-md-push-1 animate-box">
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+                <div class="fh5co-contact-info">
+                    <h3>Contact Information</h3>
+                    <ul>
+                        @*<li class="address">198 West 21th Street, <br> Pakistan</li>*@
+                        <li class="phone"><a href="tel://1234567920">Call: +92 326 7762744</a></li>
+                        <li class="email"><a href="mailto:info@yoursite.com">www.digitalskills2244@gamil.com</a></li>
+                        @*<li class="url"><a href="http://freehtml5.co">freeHTML5.co</a></li>*@
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-6 animate-box">
+                <h3>Get In Touch</h3>
+                <form action="/Home/Contact" method="Post">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <!-- <label for="fname">First Name</label> -->
+                            <input type="text" id="fname" name="Name" class="form-control" placeholder="Your firstname">
+                        </div>
+                        <!--<div class="col-md-6">-->
+                        <!-- <label for="lname">Last Name</label> -->
+                        <!--<input type="text" id="lname" class="form-control" placeholder="Your lastname">
+                        </div>-->
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <!-- <label for="email">Email</label> -->
+                            <input type="text" id="email" name="Email" class="form-control" placeholder="Your email address">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <!-- <label for="subject">Subject</label> -->
+                            <input type="text" id="subject" name="Subject" class="form-control" placeholder="Your subject of this message">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <!-- <label for="message">Message</label> -->
+                            <textarea name="MessageBody" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Send Message" class="btn btn-primary">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+

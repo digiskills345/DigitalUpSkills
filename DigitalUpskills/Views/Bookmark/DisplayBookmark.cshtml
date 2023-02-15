@@ -1,0 +1,64 @@
+@model IEnumerable<DigitalUpskills.Models.tbl_Bookmark>
+@using DigitalUpskills.Models;
+@using DigitalUpskills.Utills;
+
+@{
+    Model1 db = new Model1();
+    Layout = "~/views/shared/_LayoutUser.cshtml";
+    ViewBag.Title = "Bookmared Courses";
+}
+
+@foreach (var item in db.tbl_Bookmark.Where(x => x.Student_Fid == CurrentUser.CurrentStudent.Student_Id))
+{
+    @*<ul>
+            <li><a style="font-size:x-large" href="@Url.Action("RegisteredCourses", "Accounts", new {id=item.Course_Id})">@item.Course_Name</a></li>
+        </ul>*@
+
+}
+
+<h2>Bookmarked Courses</h2>
+@Html.Raw(TempData["msg"])
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Course.Course_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Course.Course_Detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Course.Course_Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Course.Course_Fee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Course.tbl_Instructor.Instructor_Name)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Course.Course_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Course.Course_Detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Course.Course_Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Course.Course_Fee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Course.tbl_Instructor.Instructor_Name)
+            </td>
+            <td><a href="@Url.Action("Checkout","Cart",new { id=item.Bookmark_Id})" class="btn btn-primary">Take Course</a></td>
+            @*<td><a href="@Url.Action("Addtoregister","AdminSide",new { id=item.Course_Registraion_Id})" class="btn btn-primary">Registered</a></td>*@
+        </tr>
+    }
+
+</table>

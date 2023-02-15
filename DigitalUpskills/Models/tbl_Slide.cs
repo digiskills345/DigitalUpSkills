@@ -18,6 +18,10 @@ namespace DigitalUpskills.Models
         [Required]
         public string Slide_Detail { get; set; }
 
+        [Required]
+        [MaxLength]
+        public string Slide_PDF { get; set; }
+
         public int Course_Fid { get; set; }
 
         public virtual tbl_Course tbl_Course { get; set; }

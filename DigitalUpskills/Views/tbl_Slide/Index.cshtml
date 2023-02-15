@@ -7,37 +7,44 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a class="btn btn-primary glyphicon glyphicon-pencil" href="@Url.Action("Create","tbl_Slide")"> Create New </a>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.tbl_Course.Course_Name)
+           Course Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Slide_Name)
+           Slide Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Slide_Detail)
+           Slide Detail
+        </th>
+        <th>
+           Slides
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var Slide in Model) 
+{
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.tbl_Course.Course_Name)
+            @Slide.tbl_Course.Course_Name
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Slide_Name)
+            @Slide.Slide_Name
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Slide_Detail)
+            @Slide.Slide_Detail
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Slide_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Slide_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Slide_Id })
+            <file src="@Url.Content(Slide.Slide_PDF)"  > </file>
+        </td>
+        <td>
+            <a class="btn btn-primary glyphicon glyphicon-edit" href="@Url.Action("Edit", "tbl_Slide" , new{id= Slide.Slide_Id})"> Edit </a>
+            <a class="btn btn-primary glyphicon glyphicon-book" href="@Url.Action("Details", "tbl_Slide" , new{id= Slide.Slide_Id})"> Detail </a>
+            <a class="btn btn-primary glyphicon glyphicon-trash" href="@Url.Action("Delete", "tbl_Slide" , new{id= Slide.Slide_Id})"> Delete </a>
         </td>
     </tr>
 }

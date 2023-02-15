@@ -9,12 +9,13 @@ namespace DigitalUpskills.Models
     [Table("[tbl.CourseCategory]")]
     public partial class tbl_CourseCategory
     {
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_CourseCategory()
         {
             tbl_Course = new HashSet<tbl_Course>();
+ 
         }
-
         [Key]
         public int CourseCategory_Id { get; set; }
 
@@ -30,5 +31,8 @@ namespace DigitalUpskills.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Course> tbl_Course { get; set; }
+
+
+
     }
 }

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DigitalUpskills.Models;
+using DigitalUpskills.Utills;
 
 namespace DigitalUpskills.Controllers
 {
@@ -17,8 +18,8 @@ namespace DigitalUpskills.Controllers
         // GET: tbl_Course
         public ActionResult Index()
         {
-            var tbl_Course = db.tbl_Course.Include(t => t.tbl_CourseCategory).Include(t => t.tbl_Instructor);
-            return View(tbl_Course.ToList());
+            var course = db.tbl_Course.Where(t => t.Instructor_Fid == CurrentUser.Currentinstructor.Instructor_Id).ToList();
+            return View(course);
         }
 
         // GET: tbl_Course/Details/5
@@ -40,7 +41,7 @@ namespace DigitalUpskills.Controllers
         public ActionResult Create()
         {
             ViewBag.CourseCategory_Fid = new SelectList(db.tbl_CourseCategory, "CourseCategory_Id", "CourseCategory_Name");
-            ViewBag.Instructor_Fid = new SelectList(db.tbl_Instructor, "Instructor_Id", "Instructor_Name");
+
             return View();
         }
 
@@ -50,21 +51,16 @@ namespace DigitalUpskills.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(tbl_Course tbl_Course, HttpPostedFileBase pic)
-         {
+        {
             string fullpath = Server.MapPath("~/Content/Projectpic/" + pic.FileName);
             pic.SaveAs(fullpath);
             tbl_Course.Course_Image = ("~/Content/Projectpic/" + pic.FileName);
-
-            if (ModelState.IsValid)
-            {
-                db.tbl_Course.Add(tbl_Course);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
+            tbl_Course.Is_Approved = false;
+            tbl_Course.Instructor_Fid = CurrentUser.Currentinstructor.Instructor_Id;
+            db.tbl_Course.Add(tbl_Course);
+            db.SaveChanges();
             ViewBag.CourseCategory_Fid = new SelectList(db.tbl_CourseCategory, "CourseCategory_Id", "CourseCategory_Name", tbl_Course.CourseCategory_Fid);
-            ViewBag.Instructor_Fid = new SelectList(db.tbl_Instructor, "Instructor_Id", "Instructor_Name", tbl_Course.Instructor_Fid);
-            return View(tbl_Course);
+            return RedirectToAction("Index");
         }
 
         // GET: tbl_Course/Edit/5

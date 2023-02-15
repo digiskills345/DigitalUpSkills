@@ -1,0 +1,114 @@
+@using DigitalUpskills.Models
+@using DigitalUpskills.Utills
+@{
+
+    Layout = "~/views/shared/_LayoutUser.cshtml";
+    Model1 db = new Model1();
+    tbl_Instructor instructor = CurrentUser.Currentinstructor;
+}
+
+
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="page-name">Digital Upskills</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="@Url.Action("IndexUser","Home")">Home</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="user-dashboard page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-inline dashboard-menu text-center">
+                    <li><a class="active" href="@Url.Action("InstructorDashboard","InstructorControlsController")">Dashboard</a></li>
+                    <li><a href="@Url.Action("Index","tbl_Course")">Manage Courses</a></li>
+                    <li><a href="@Url.Action("Registrations","InstructorControls")">Manage Bookings</a></li>
+                    <li><a href="@Url.Action("Edit","InstructorControls", new{id= CurrentUser.Currentinstructor.Instructor_Id})" )">Manage Account</a></li>
+                    <li><a href="@Url.Action("Create","tbl_Course", new{id= CurrentUser.Currentinstructor.Instructor_Id})" )">Create Course</a></li>
+                </ul>
+                <div class="dashboard-wrapper dashboard-user-profile">
+                    <div class="media">
+                        <div class="pull-left text-center" href="#!">
+                            <img style="height:160px" class="media-object user-img" src="@Url.Content(CurrentUser.Currentinstructor.Instructor_Image)" alt="Image">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                              Change Image
+                            </button>
+                        </div>
+                        <div class="media-body">
+                            <ul class="user-profile-list">
+                                <li><span>Full Name:</span>@CurrentUser.Currentinstructor.Instructor_Name</li>
+                                <li><span>Country:</span>@CurrentUser.Currentinstructor.Instructor_Address</li>
+                                <li><span>Email:</span>@CurrentUser.Currentinstructor.Instructor_Gmail</li>
+                                <li><span>Phone:</span>@CurrentUser.Currentinstructor.Instructor_PhoneNo</li>
+                                <li><span>Detail:</span>@CurrentUser.Currentinstructor.Instructor_Detail</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@*Modal*@
+
+
+@*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change Profile Picture</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="/InstructorControls/Edit">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Picture:</label>
+                            <input type="file" name="pic" class="form-control" id="pic">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" enctype="multipart/form-data" action="/InstructorControls/EditImage" >
+                <div class="modal-body">
+                    <input name="pic" type="file" />
+                    <input value="@CurrentUser.Currentinstructor.Instructor_Id" hidden />
+                </div>
+                <button type="submit"  class="btn btn-primary">Save changes</button>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+</div>

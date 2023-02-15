@@ -15,6 +15,8 @@ namespace DigitalUpskills.Models
             tbl_CourseRegistration = new HashSet<tbl_CourseRegistration>();
             tbl_Lecture = new HashSet<tbl_Lecture>();
             tbl_Slide = new HashSet<tbl_Slide>();
+            tbl_Feedback = new HashSet<tbl_Feedback>();
+            tbl_Bookmark = new HashSet<tbl_Bookmark>();
         }
 
         [Key]
@@ -23,6 +25,9 @@ namespace DigitalUpskills.Models
         [Required]
         [StringLength(50)]
         public string Course_Name { get; set; }
+
+        [Required]
+        public Boolean Is_Approved { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -36,15 +41,11 @@ namespace DigitalUpskills.Models
         [Required]
         [StringLength(50)]
         public string Course_Duration { get; set; }
- 
-        public string Course_Quantity { get; set; }
 
-
-        [Required]
+       
         public string Course_Image { get; set; }
 
         public int Instructor_Fid { get; set; }
-
         public int CourseCategory_Fid { get; set; }
 
         public virtual tbl_CourseCategory tbl_CourseCategory { get; set; }
@@ -59,5 +60,11 @@ namespace DigitalUpskills.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Slide> tbl_Slide { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Feedback> tbl_Feedback { get; set; } 
+        
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Bookmark> tbl_Bookmark { get; set; }
     }
 }

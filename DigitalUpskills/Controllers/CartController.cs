@@ -39,6 +39,11 @@ namespace DigitalUpskills.Controllers
             return View("DisplayCart");
         }
 
+        public ActionResult PayNow()
+        {
+            return Redirect("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=sb-dfpwc25010395@business.example.com&item_name=DigitalUpskillsCourses&return=http://localhost:44327/Cart/CourseRegistered&amount=" + double.Parse(Session["Total"].ToString())/277); 
+        }
+
         public ActionResult DisplayCart()
         {
             return View();
@@ -96,7 +101,7 @@ namespace DigitalUpskills.Controllers
         {
             return View();
         }
-    
+
         public ActionResult codeverify()
         {
             return View();

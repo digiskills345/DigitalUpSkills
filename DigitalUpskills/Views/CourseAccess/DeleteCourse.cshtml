@@ -1,0 +1,78 @@
+﻿@model DigitalUpskills.Models.tbl_Course
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>COURSE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Course_Image)
+        </dt>
+
+        <dd>
+
+            <img src="@Url.Content(Model.Course_Image)" width="100" height="100" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Instructor.Instructor_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Instructor.Instructor_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Course_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Course_Fee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course_Fee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Course_Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course_Duration)
+        </dd>
+        <dt>
+
+            @Html.DisplayNameFor(model => model.Course_Detail)
+        </dt>
+
+        <dd>
+
+        </dd>
+        @Html.DisplayFor(model => model.Course_Detail)
+        <dt>
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+

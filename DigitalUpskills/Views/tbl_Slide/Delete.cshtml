@@ -35,6 +35,14 @@
             @Html.DisplayFor(model => model.Slide_Detail)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Slide_PDF)
+        </dt>
+
+        <dd>
+            <iframe src="~/Content/Slides/" width="100" height="100"> </iframe>
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {

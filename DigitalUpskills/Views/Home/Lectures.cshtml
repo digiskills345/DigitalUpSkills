@@ -1,0 +1,77 @@
+@using DigitalUpskills.Models
+
+@{ Layout = "~/views/shared/_LayoutUser.cshtml";
+    Model1 db = new Model1();
+}
+
+<aside id="fh5co-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url('../../Content/Projectpic/images (5).jpg')">
+                <div class="overlay-gradient"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center slider-text">
+                            <div class="slider-text-inner">
+                                <h1 class="heading-section">Our Lectures</h1>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+<div id="fh5co-course">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+                <h2>Our Lectures</h2>
+                <p>Here are available different courses for enhance student's skills and knowledge</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in db.tbl_Lecture)
+            {
+                if (ViewData["lecid"] == null || item.Course_Fid == (int)ViewData["lecid"])
+                {
+                    <div class="col-md-6 animate-box">
+                        <div class="course">
+                            <video controls width="100" height="100">
+
+                                <source src="@Url.Content(item.Video_Lecture_Path)" />
+
+                            </video>
+                            <div class="desc">
+                                <h3><a href="#">@item.Lecture_Name</a></h3>
+                                <h3><a href="#">@item.Lecture_Detail</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                else if (item.Course_Fid == (int)(ViewData["lecid"]))
+                {
+                    <div class="col-md-6 animate-box">
+                        <div class="course">
+                            <video controls width="100" height="100">
+
+                                <source src="@Url.Content(item.Video_Lecture_Path)" />
+
+                            </video>
+                            <div class="desc">
+                                <h3><a href="#">@item.Lecture_Name</a></h3>
+                                <h3><a href="#">@item.Lecture_Detail</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+

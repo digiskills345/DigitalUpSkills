@@ -32,7 +32,12 @@ namespace DigitalUpskills.Controllers
             if (CourseCategory != null)
             {
                 register = db.tbl_CourseRegistration.Where(x => x.Status == "Registered" && x.Registration_Date >= DateFrom && x.Registration_Date <= DateTo).OrderByDescending(x => x.Registration_Date).ToList();
-                register.All(c => c.tbl_Course.CourseCategory_Fid == CourseCategory);
+                register = register.Where(x => x.tbl_Course.tbl_CourseRegistration.All(z=> z.tbl_Course.CourseCategory_Fid==CourseCategory)).ToList();
+            }
+            if(Course != null)
+            {
+                register = db.tbl_CourseRegistration.Where(x => x.Status == "Registered" && x.Registration_Date >= DateFrom && x.Registration_Date <= DateTo).OrderByDescending(x => x.Registration_Date).ToList();
+                register = register.Where(x => x.tbl_Course.tbl_CourseRegistration.All(z => z.Course_Fid== Course)).ToList();
             }
             else
             {

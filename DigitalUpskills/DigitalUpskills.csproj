@@ -129,10 +129,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\AdminLoginSystemController.cs" />
     <Compile Include="Controllers\AdminSideController.cs" />
+    <Compile Include="Controllers\BookmarkController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CourseAccessController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstructorControlsController.cs" />
+    <Compile Include="Controllers\LectureAccessController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\StudentLoginSystemController.cs" />
     <Compile Include="Controllers\tbl_AdminController.cs" />
     <Compile Include="Controllers\tbl_CourseCategoryController.cs" />
     <Compile Include="Controllers\tbl_CourseController.cs" />
@@ -146,7 +154,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\tbl_Message.cs" />
     <Compile Include="Models\tbl_Admin.cs" />
+    <Compile Include="Models\tbl_Bookmark.cs" />
     <Compile Include="Models\tbl_Course.cs" />
     <Compile Include="Models\tbl_CourseCategory.cs" />
     <Compile Include="Models\tbl_CourseRegistration.cs" />
@@ -159,6 +169,7 @@
     <Compile Include="Utills\Email.cs" />
     <Compile Include="Utills\EmailProvider.cs" />
     <Compile Include="Utills\CurrentUser.cs" />
+    <Compile Include="Utills\SearchCourses.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin-Template\css\perfect-scrollbar.css" />
@@ -3698,12 +3709,14 @@
     <Content Include="Content\Projectpic\elearning %288%29.png" />
     <Content Include="Content\Projectpic\English.jpg" />
     <Content Include="Content\Projectpic\graphic.jpg" />
+    <Content Include="Content\Projectpic\images %283%29.jfif" />
     <Content Include="Content\Projectpic\images %284%29.jpeg" />
     <Content Include="Content\Projectpic\images %285%29.jpg" />
     <Content Include="Content\Projectpic\images %287%29.jpg" />
     <Content Include="Content\Projectpic\images.jpg" />
     <Content Include="Content\Projectpic\istockphoto-1023229588-612x612.jpg" />
     <Content Include="Content\Projectpic\JAVA.jpg" />
+    <Content Include="Content\Projectpic\StudentAvater.png" />
     <Content Include="Content\Projectpic\teacher %281%29.jpeg" />
     <Content Include="Content\Projectpic\web development %282%29.jpg" />
     <Content Include="Content\User-Template\css\animate.css" />
@@ -3717,6 +3730,7 @@
     <Content Include="Content\User-Template\css\style.css" />
     <Content Include="Content\User-Template\fonts\bootstrap\glyphicons-halflings-regular.svg" />
     <Content Include="Content\User-Template\fonts\icomoon\icomoon.svg" />
+    <Content Include="Content\User-Template\images\images.png" />
     <Content Include="Content\User-Template\images\img_bg_1.jpg" />
     <Content Include="Content\User-Template\images\img_bg_2.jpg" />
     <Content Include="Content\User-Template\images\img_bg_3.jpg" />
@@ -4309,13 +4323,27 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\InstructorControls\InstructorDashboard.cshtml" />
+    <Content Include="Views\Accounts\StudentDashboard.cshtml" />
+    <Content Include="Views\Accounts\RegisterdCourses.cshtml" />
+    <Content Include="Views\Accounts\Edit.cshtml" />
+    <Content Include="Views\Accounts\Delete.cshtml" />
     <None Include="Views\AdminSide\invoice.cshtml" />
-    <Content Include="Views\Home\LoginAdmin1.cshtml" />
+    <Content Include="Views\AdminLoginSystem\LoginAdmin1.cshtml" />
     <Content Include="Views\AdminSide\NewRegistrations.cshtml" />
     <Content Include="Views\Cart\RegistrationCompleted.cshtml" />
     <Content Include="Views\Cart\codeverify.cshtml" />
     <Content Include="Views\Cart\NewPassword.cshtml" />
+    <Content Include="Views\Bookmark\DisplayBookmark.cshtml" />
+    <Content Include="Views\CourseAccess\Index.cshtml" />
+    <Content Include="Views\CourseAccess\NewCourses.cshtml" />
+    <Content Include="Views\CourseAccess\DeleteCourse.cshtml" />
+    <Content Include="Views\Cart\CourseRegistered.cshtml" />
     <None Include="Views\Home\CourseCategory.cshtml" />
+    <Content Include="Views\Home\Lectures.cshtml" />
+    <Content Include="Views\Home\Slides.cshtml" />
+    <Content Include="Views\Course\CourseDetail.cshtml" />
+    <Content Include="Views\Home\CoursesByTeacher.cshtml" />
     <None Include="Views\Home\Courses.cshtml" />
     <None Include="Views\Cart\Checkout.cshtml" />
     <None Include="Views\Cart\DisplayCart.cshtml" />
@@ -4340,16 +4368,6 @@
     <Content Include="Views\tbl_Admin\Details.cshtml" />
     <Content Include="Views\tbl_Admin\Edit.cshtml" />
     <Content Include="Views\tbl_Admin\Index.cshtml" />
-    <Content Include="Views\tbl_Course\Create.cshtml" />
-    <Content Include="Views\tbl_Course\Delete.cshtml" />
-    <Content Include="Views\tbl_Course\Details.cshtml" />
-    <Content Include="Views\tbl_Course\Edit.cshtml" />
-    <Content Include="Views\tbl_Course\Index.cshtml" />
-    <Content Include="Views\tbl_CourseCategory\Create.cshtml" />
-    <Content Include="Views\tbl_CourseCategory\Delete.cshtml" />
-    <Content Include="Views\tbl_CourseCategory\Details.cshtml" />
-    <Content Include="Views\tbl_CourseCategory\Edit.cshtml" />
-    <Content Include="Views\tbl_CourseCategory\Index.cshtml" />
     <Content Include="Views\tbl_CourseRegistration\Create.cshtml" />
     <Content Include="Views\tbl_CourseRegistration\Delete.cshtml" />
     <Content Include="Views\tbl_CourseRegistration\Details.cshtml" />
@@ -4363,36 +4381,51 @@
     <Content Include="Views\tbl_Instructor\Create.cshtml" />
     <Content Include="Views\tbl_Instructor\Delete.cshtml" />
     <Content Include="Views\tbl_Instructor\Details.cshtml" />
-    <Content Include="Views\tbl_Instructor\Edit.cshtml" />
+    <Content Include="Views\InstructorControls\Edit.cshtml" />
     <Content Include="Views\tbl_Instructor\Index.cshtml" />
     <Content Include="Views\tbl_Lecture\Create.cshtml" />
     <Content Include="Views\tbl_Lecture\Delete.cshtml" />
     <Content Include="Views\tbl_Lecture\Details.cshtml" />
     <Content Include="Views\tbl_Lecture\Edit.cshtml" />
     <Content Include="Views\tbl_Lecture\Index.cshtml" />
-    <Content Include="Views\tbl_Slide\Create.cshtml" />
-    <Content Include="Views\tbl_Slide\Delete.cshtml" />
-    <Content Include="Views\tbl_Slide\Details.cshtml" />
-    <Content Include="Views\tbl_Slide\Edit.cshtml" />
-    <Content Include="Views\tbl_Slide\Index.cshtml" />
     <Content Include="Views\tbl_Student\Create.cshtml" />
     <Content Include="Views\tbl_Student\Delete.cshtml" />
     <Content Include="Views\tbl_Student\Details.cshtml" />
     <Content Include="Views\tbl_Student\Edit.cshtml" />
     <Content Include="Views\tbl_Student\Index.cshtml" />
-    <Content Include="Views\Home\LoginStudent.cshtml" />
-    <Content Include="Views\Home\SignupStudent.cshtml" />
-    <Content Include="Views\Home\ForgotPassword.cshtml" />
+    <Content Include="Views\StudentLoginSystem\LoginStudent.cshtml" />
+    <Content Include="Views\StudentLoginSystem\SignupStudent.cshtml" />
+    <Content Include="Views\StudentLoginSystem\ForgotPassword.cshtml" />
     <Content Include="Views\Reports\RegistrationReport.cshtml" />
     <Content Include="Views\Home\LoginInstructor.cshtml" />
     <Content Include="Views\Home\SignupInstructor.cshtml" />
     <Content Include="Views\Home\Instructor.cshtml" />
-    <Content Include="Views\Home\LoginAdmin.cshtml" />
+    <Content Include="Views\AdminLoginSystem\LoginAdmin.cshtml" />
+    <Content Include="Views\tbl_Course\Create.cshtml" />
+    <Content Include="Views\tbl_Course\Delete.cshtml" />
+    <Content Include="Views\tbl_Course\Details.cshtml" />
+    <Content Include="Views\tbl_Course\Edit.cshtml" />
+    <Content Include="Views\tbl_Course\Index.cshtml" />
+    <Content Include="Views\tbl_CourseCategory\Create.cshtml" />
+    <Content Include="Views\tbl_CourseCategory\Delete.cshtml" />
+    <Content Include="Views\tbl_CourseCategory\Details.cshtml" />
+    <Content Include="Views\tbl_CourseCategory\Edit.cshtml" />
+    <Content Include="Views\tbl_CourseCategory\Index.cshtml" />
+    <Content Include="Views\InstructorControls\UploadLecture.cshtml" />
+    <Content Include="Views\InstructorControls\UploadSlides.cshtml" />
+    <Content Include="Views\tbl_Slide\Create.cshtml" />
+    <Content Include="Views\tbl_Slide\Delete.cshtml" />
+    <Content Include="Views\tbl_Slide\Details.cshtml" />
+    <Content Include="Views\tbl_Slide\Edit.cshtml" />
+    <Content Include="Views\tbl_Slide\Index.cshtml" />
+    <Content Include="Views\InstructorControls\Delete.cshtml" />
+    <Content Include="Views\InstructorControls\Registrations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin-Template\.vs\focus\FileContentIndex\merges\" />
     <Folder Include="Content\Admin-Template\.vs\focus\v17\" />
+    <Folder Include="Content\Slides\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

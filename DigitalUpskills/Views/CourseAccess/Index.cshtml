@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DigitalUpskills.Models.tbl_Course>
+
+@{
+
+    ViewBag.Title = "Index";
+
+}
+
+
+
+<h2>Courses</h2>
+<a  class="btn btn-block btn-primary" href="@Url.Action("NewCourses", "CourseAccess") ">New Courses</a>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Image
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Instructor Name
+        </th>
+        <th>
+            Code
+        </th>
+        <th>
+            Fee
+        </th>
+        <th>
+            Duration
+        </th>
+        <th>
+            Detail
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src=" @Url.Content(item.Course_Image) " width="100" height="100" />
+            </td>
+            <td>
+                @item.Course_Name
+            </td>
+            <td>
+                @item.tbl_Instructor.Instructor_Name
+            </td>
+            <td>
+                @item.Course_Code
+            </td>
+            <td>
+                @item.Course_Fee
+            </td>
+            <td>
+                @item.Course_Duration
+            </td>
+            <td>
+                @item.Course_Detail
+            </td>
+            <td>
+            <td>
+                <a class="btn btn-danger square-btn-adjust , glyphicon glyphicon-trash" href="@Url.Action("Delete", "CourseAccess", new { id = item.Course_Id}) "></a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+

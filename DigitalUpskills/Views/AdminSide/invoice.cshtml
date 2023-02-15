@@ -1,5 +1,7 @@
 @model DigitalUpskills.Models.tbl_CourseRegistration
-
+@*@{ 
+    Decimal Total = 0;
+}*@
     <div class="unix-invoice">
         <div class="container-fluid">
             <div class="row">
@@ -25,7 +27,7 @@
                         <!--End InvoiceTop-->
 
 
-
+                        
                         <div id="invoice-mid">
 
                             <div class="clientlogo"></div>
@@ -35,14 +37,12 @@
                                   Student Email: @Model.Gmail <br />
                                   Student PhoneNo: @Model.PhoneNo <br />
                                    Student Address: @Model.Address </p>
-                            </div>
-
                             <div id="project">
                                 <h2>Description</h2>
                                 <p>@Model.tbl_Course.Course_Detail</p>
                             </div>
-
                         </div>
+                                
                         <!--End Invoice Mid-->
 
                         <div id="invoice-bot">
@@ -64,7 +64,7 @@
                                                 <h2>Total</h2>
                                             </td>
                                         </tr>
-                                     
+                                         @*Total += item.Course_Fee;*@
                                         <tr class="service">
                                             <td class="tableitem">
                                                 <p class="itemtext">@Model.tbl_Course.Course_Name</p>
@@ -79,7 +79,6 @@
                                                 <p class="itemtext">@Model.tbl_Course.Course_Fee</p>
                                             </td>
                                         </tr>
-                                    
                                     </table>
                                 </div>
                             </div>
@@ -89,3 +88,4 @@
                                         </div>
                                           </div>
                                               </div>
+                                                </div>

@@ -14,6 +14,7 @@ namespace DigitalUpskills.Models
         {
             tbl_CourseRegistration = new HashSet<tbl_CourseRegistration>();
             tbl_Feedback = new HashSet<tbl_Feedback>();
+            tbl_Bookmark = new HashSet<tbl_Bookmark>();
         }
 
         [Key]
@@ -43,10 +44,15 @@ namespace DigitalUpskills.Models
         [StringLength(50)]
         public string Student_Address { get; set; }
 
+        public string Student_Image { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_CourseRegistration> tbl_CourseRegistration { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_Feedback> tbl_Feedback { get; set; }
+        public virtual ICollection<tbl_Feedback> tbl_Feedback { get; set; } 
+        
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Bookmark> tbl_Bookmark{ get; set; }
     }
 }

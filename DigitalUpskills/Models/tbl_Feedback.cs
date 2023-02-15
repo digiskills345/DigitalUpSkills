@@ -15,11 +15,18 @@ namespace DigitalUpskills.Models
         [StringLength(50)]
         public string Feedback_Description { get; set; }
 
+        [Column(TypeName = "date")]
+        public DateTime Feedback_Date { get; set; }
+
         [Column(TypeName = "numeric")]
         public decimal? Feedback_Rating { get; set; }
 
         public int Student_Fid { get; set; }
 
+        public int Course_Fid { get; set; }
+
         public virtual tbl_Student tbl_Student { get; set; }
+
+        public virtual tbl_Course tbl_Course { get; set; }
     }
 }
